@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南泥湾英雄献花纪念</title>
+    </zcl/style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(45deg, #8B0000 0%, #DC143C 50%, #B22222 100%);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            color: #FFD700;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        .header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: glow 2s infinite;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #FFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1s ease-out;
+            border: 2px solid #B22222;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .hero-card:hover::before {
+            left: 100%;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: #FFD700;
+        }
+
+        .hero-symbol {
+            font-size: 3em;
+            color: #8B0000;
+            text-align: center;
+            margin-bottom: 15px;
+            animation: rotate 10s linear infinite;
+        }
+
+        .hero-name {
+            font-size: 1.8em;
+            color: #8B0000;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-title {
+            font-size: 1.1em;
+            color: #DC143C;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1em;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .flower-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #8B0000, #DC143C);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+
+        .flower-button:hover {
+            background: linear-gradient(45deg, #DC143C, #8B0000);
+            transform: scale(1.05);
+        }
+
+        .flower-button.tributed {
+            background: #888;
+            cursor: not-allowed;
+        }
+
+        .tribute-count {
+            text-align: center;
+            margin: 30px 0;
+            color: #FFD700;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-20px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+        }
+
+        .petal {
+            position: absolute;
+            font-size: 1.5em;
+            color: #DC143C;
+            animation: petalFall 2s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            .heroes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>南泥湾英雄献花纪念</h1>
+            <p>缅怀先烈，铭记历史。南泥湾精神永垂不朽，让我们向为革命事业英勇献身的英雄们致敬。</p>
+        </header>
+
+        <div class="tribute-count">
+            <p>已有 <span id="tributeCount">0</span> 人次向英雄献花</p>
+        </div>
+
+        <div class="heroes-grid">
+            <!-- 英雄卡片1 -->
+            <div class="hero-card">
+                <div class="hero-symbol">★</div>
+                <div class="hero-info">
+                    <h3 class="hero-name">王震</h3>
+                    <p class="hero-title">三五九旅旅长</p>
+                    <p class="hero-description">1908年出生于湖南浏阳，南泥湾大生产运动的主要领导者。1941年率领三五九旅进驻荒无人烟的南泥湾，提出"一把镢头一支枪，生产自给保卫党中央"的口号，将"烂泥湾"变成了"陕北的好江南"。</p>
+                    <button class="flower-button" onclick="tribute(this, '王震')">献上鲜花</button>
+                </div>
+            </div>
+
+            <!-- 英雄卡片2 -->
+            <div class="hero-card">
+                <div class="hero-symbol">✦</div>
+                <div class="hero-info">
+                    <h3 class="hero-name">刘宝斋</h3>
+                    <p class="hero-title">三五九旅七一九团九连副连长</p>
+                    <p class="hero-description">初到南泥湾时，面对没地方住、没菜吃、没鞋穿的困难，带领战士们用树枝搭帐篷、挖野菜充饥、编织草鞋。一手拿枪、一手拿镢头，在荆棘遍野中开垦良田，为把南泥湾建设成"陕北的好江南"贡献了全部力量。</p>
+                    <button class="flower-button" onclick="tribute(this, '刘宝斋')">献上鲜花</button>
+                </div>
+            </div>
+
+            <!-- 英雄卡片3 -->
+            <div class="hero-card">
+                <div class="hero-symbol">❋</div>
+                <div class="hero-info">
+                    <h3 class="hero-name">郝树才</h3>
+                    <p class="hero-title">三五九旅战士</p>
+                    <p class="hero-description">以惊人的劳动效率闻名。在一次开荒竞赛中，创造了日开荒四亩二分三的纪录，被毛泽东亲切地称为"气死牛"。这个称号不仅体现了他超群的劳动能力，更代表了南泥湾战士们不畏艰难、奋发图强的精神。</p>
+                    <button class="flower-button" onclick="tribute(this, '郝树才')">献上鲜花</button>
+                </div>
+            </div>
+
+            <!-- 英雄卡片4 -->
+            <div class="hero-card">
+                <div class="hero-symbol">✻</div>
+                <div class="hero-info">
+                    <h3 class="hero-name">陈宗尧</h3>
+                    <p class="hero-title">三五九旅七一八团团长</p>
+                    <p class="hero-description">被称为"模范团长"。尽管身体多次负伤，仍坚持与战士们一起劳动。带领团司令部人员住在荒地，与战士们同吃同住同劳动，直到开荒任务完成才返回营房，展现了共产党领导干部的优良作风。</p>
+                    <button class="flower-button" onclick="tribute(this, '陈宗尧')">献上鲜花</button>
+                </div>
+            </div>
+
+            <!-- 英雄卡片5 -->
+            <div class="hero-card">
+                <div class="hero-symbol">✿</div>
+                <div class="hero-info">
+                    <h3 class="hero-name">罗章</h3>
+                    <p class="hero-title">三五九旅供给部政治委员</p>
+                    <p class="hero-description">负责全旅的生产组织工作。随身带着一把七八斤重的大镢头，走遍了全旅各个生产点，走到哪儿就在哪儿与干部战士一起开荒。由于过度劳累，曾跌进深沟受重伤，但仍坚持不懈。</p>
+                    <button class="flower-button" onclick="tribute(this, '罗章')">献上鲜花</button>
+                </div>
+            </div>
+
+            <!-- 英雄卡片6 -->
+            <div class="hero-card">
+                <div class="hero-symbol">❀</div>
+                <div class="hero-info">
+                    <h3 class="hero-name">李位</h3>
+                    <p class="hero-title">三五九旅战士</p>
+                    <p class="hero-description">在开荒生产中表现突出，创造了日开荒三亩的记录。他不怕苦不怕累，双手磨满血泡仍坚持劳动，体现了八路军战士顽强的战斗意志和艰苦奋斗的精神，成为全旅学习的榜样。</p>
+                    <button class="flower-button" onclick="tribute(this, '李位')">献上鲜花</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2023 南泥湾英雄纪念馆 | 铭记历史 传承精神</p>
+    </footer>
+
+    <script>
+        // 从本地存储获取献花计数
+        let tributeCount = localStorage.getItem('tributeCount') || 0;
+        document.getElementById('tributeCount').textContent = tributeCount;
+
+        // 献花功能
+        function tribute(button, heroName) {
+            if (button.classList.contains('tributed')) {
+                return;
+            }
+
+            // 更新按钮状态
+            button.textContent = '已献花';
+            button.classList.add('tributed');
+            button.disabled = true;
+
+            // 更新计数
+            tributeCount++;
+            localStorage.setItem('tributeCount', tributeCount);
+            document.getElementById('tributeCount').textContent = tributeCount;
+
+            // 创建花瓣飘落效果
+            createPetalRain(button.closest('.hero-card'));
+
+            // 显示感谢信息
+            setTimeout(() => {
+                alert(`您已向${heroName}烈士献上鲜花，表达您的敬意！南泥湾精神永垂不朽！`);
+            }, 500);
+        }
+
+        // 创建花瓣飘落效果
+        function createPetalRain(card) {
+            const petals = ['🌺', '🌸', '🌹', '🌻', '🌷'];
+            const cardRect = card.getBoundingClientRect();
+
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+                    petal.style.left = Math.random() * 100 + '%';
+                    petal.style.top = '0px';
+                    card.appendChild(petal);
+
+                    setTimeout(() => {
+                        petal.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        // 页面加载动画
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.hero-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = (index * 0.1) + 's';
+            });
+        });
+    </script>
+</body>
+</html>
